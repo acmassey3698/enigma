@@ -12,19 +12,30 @@ module Generateable
     [key[0..1], key[1..2], key[2..3], key[3..4]]
   end
 
-  def offset_a(key)
-    split_key(key)[0]
+  def generate_offsets(date)
+    squared = date.to_i * date.to_i
+    last_four = squared.to_s[-4..-1]
+    last_four.split("")
+    require "pry"; binding.pry
   end
 
-  def offset_b
-    split_key(key)[1]
+  def generate_final_shifts(date)
+
   end
 
-  def offset_c
-    split_key(key)[2]
-  end
-
-  def offset_d
-    split_key(key)[3]
-  end
+  # def offset_a(key)
+  #   split_key(key)[0]
+  # end
+  #
+  # def offset_b
+  #   split_key(key)[1]
+  # end
+  #
+  # def offset_c
+  #   split_key(key)[2]
+  # end
+  #
+  # def offset_d
+  #   split_key(key)[3]
+  # end
 end

@@ -9,7 +9,7 @@ RSpec.describe Enigma do
     expect(enigma).to be_an(Enigma)
   end
 
-  xit "has an encrypt method that can take all three arguments" do
+  it "has an encrypt method that can take all three arguments" do
     enigma = Enigma.new
 
     input = enigma.encrypt("Hello World", "31233", "210707")
@@ -17,7 +17,7 @@ RSpec.describe Enigma do
     expect(input).to be_a(String)
   end
 
-  xit "it has an encrypt method that can take only two arguments" do
+  it "it has an encrypt method that can take only two arguments" do
     enigma = Enigma.new
 
     input_without_date = enigma.encrypt("Hello World", "31233",)
@@ -48,6 +48,6 @@ RSpec.describe Enigma do
 
     input_without_date = enigma.decrypt("dasfn fdas", "34324")
 
-    expect(input).to be_a(String)
-  end 
+    expect(input_without_date).to be_a(String)
+  end
 end
