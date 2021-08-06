@@ -35,6 +35,19 @@ RSpec.describe Enigma do
     expect(input_only_message).to be_a(String)
   end
 
+  it "has a decrypt method that can take all three arguments" do
+    enigma = Enigma.new
 
+    input = enigma.decrypt("acdn nfaone", "23542", "120385")
 
+    expect(input).to be_a(String)
+  end
+
+  it "has a decrypt method that allows for an omitted date" do
+    enigma = Enigma.new
+
+    input_without_date = enigma.decrypt("dasfn fdas", "34324")
+
+    expect(input).to be_a(String)
+  end 
 end
