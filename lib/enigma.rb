@@ -1,4 +1,5 @@
 require "./generateable"
+require "date"
 
 class Enigma
 include Generateable
@@ -8,10 +9,17 @@ include Generateable
   end
 
   def encrypt(message, key = random_key, date = Date.today.strftime("%d%m%y"))
-    message
+    shifts = final_shifts(key, date)
+    split_message = message.split("")
+    characters = characters_array
+    require "pry"; binding.pry
   end
 
   def decrypt(ciphertext, key, date = Date.today.strftime("%d%m%y"))
     ciphertext
+    #Returns a hash with these three keys
+    ## :decryption => the decrypted String
+    ## :key => the key used for decryption as a String
+    ## :date => the date used for decryption as a String in the form DDMMYY
   end
 end
