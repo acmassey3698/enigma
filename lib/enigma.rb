@@ -1,4 +1,4 @@
-require "./key"
+require "./generateable"
 
 class Enigma
 include Generateable
@@ -7,7 +7,7 @@ include Generateable
 
   end
 
-  def encrypt(message, key = generate_key, date = today)
+  def encrypt(message, key = generate_key, date = Date.today.strftime("%d%m%y"))
     message
   end
 
@@ -20,9 +20,6 @@ include Generateable
   #   key
   # end
 
-  def today(date = Time.now)
-    date.strftime("%d%m%y")
-  end
 
 
 end
