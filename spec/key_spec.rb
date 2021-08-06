@@ -18,7 +18,13 @@ RSpec.describe Key do
     expect(key_1.key).to be_a(String)
   end
 
-  def
+  it "splits a key" do
+    key_1 = Key.new
+
+    key_1.generate_key
+
+    expect(key_1.split_key).to be_a(Array)
+  end
 
 
 
