@@ -1,30 +1,33 @@
 module Generateable
 
-  def generate_key
+  def random_key
     key = rand(99999).to_s
-
     if key.length < 5
       key.prepend("0") until key.length == 5
     end
   end
 
-  def split_key(key)
+  def split_keys(key)
     [key[0..1], key[1..2], key[2..3], key[3..4]]
   end
 
-  def offset_a(key)
-    split_key(key)[0]
+  def offsets(date)
+    squared = date.to_i * date.to_i
+    last_four = squared.to_s[-4..-1]
+    last_four.split("")
   end
 
-  def offset_b
-    split_key(key)[1]
+  def final_shifts(key, date)
+    final_shifts = {
+    a: split_keys(key)[0].to_i + offsets(date)[0].to_i,
+    b: split_keys(key)[1].to_i + offsets(date)[1].to_i,
+    c: split_keys(key)[2].to_i + offsets(date)[2].to_i,
+    d: split_keys(key)[3].to_i + offsets(date)[3].to_i,
+  }
   end
 
-  def offset_c
-    split_key(key)[2]
+  def characters_array
+    ("a".."z").to_a << " "
   end
 
-  def offset_d
-    split_key(key)[3]
-  end
 end
