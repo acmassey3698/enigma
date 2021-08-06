@@ -18,11 +18,16 @@ module Generateable
   end
 
   def final_shifts(key, date)
-    a = split_keys(key)[0].to_i + offsets(date)[0].to_i
-    b = split_keys(key)[1].to_i + offsets(date)[1].to_i
-    c = split_keys(key)[2].to_i + offsets(date)[2].to_i
-    d = split_keys(key)[3].to_i + offsets(date)[3].to_i
-    final_shifts = [ a, b, c, d]
+    final_shifts = {
+    a: split_keys(key)[0].to_i + offsets(date)[0].to_i,
+    b: split_keys(key)[1].to_i + offsets(date)[1].to_i,
+    c: split_keys(key)[2].to_i + offsets(date)[2].to_i,
+    d: split_keys(key)[3].to_i + offsets(date)[3].to_i,
+  }
+  end
+
+  def characters_array
+    ("a".."z").to_a << " "
   end
 
 end
