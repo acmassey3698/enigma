@@ -9,9 +9,11 @@ include Generateable
   end
 
   def encrypt(message, key = random_key, date = Date.today.strftime("%d%m%y"))
-    shifts = final_shifts(key, date)
-    split_message = message.split("")
-    characters = characters_array
+    # shifts = final_shifts(key, date)
+    # split_message = message.split("")
+    # characters = characters_array
+
+    encrypted = EncryptAlgorithim.new(message, key, date)
     require "pry"; binding.pry
   end
 
