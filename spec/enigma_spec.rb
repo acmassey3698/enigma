@@ -24,22 +24,34 @@ RSpec.describe Enigma do
     expect(input).to eq(expected_output)
   end
 
-  xit "it has an encrypt method that can take only two arguments" do
+  it "it has an encrypt method that can take only two arguments" do
     enigma = Enigma.new
 
-    input_without_date = enigma.encrypt("Hello World", "31233",)
+    input_without_date = enigma.encrypt("Hello World", "02715")
     input_without_key = enigma.encrypt("Hello World", "210707")
 
-    expect(input_without_date).to be_a(String)
-    expect(input_without_key).to be_a(String)
+    expected_1 = {
+      :date => "080821",
+      :encryption => "nefau qdxly",
+      :key => "02715"
+    }
+
+    expect(input_without_date).to eq(expected_1)
+    expect(input_without_key).to eq(expected_1)
   end
 
-  xit "has an encrypt method that can take just the message" do
+  it "has an encrypt method that can take just the message" do
     enigma = Enigma.new
 
     input_only_message = enigma.encrypt("Hello World")
 
-    expect(input_only_message).to be_a(String)
+    expected = {
+      :date => "080821",
+      :encryption => "rwrwyrbzacj",
+      :key => "87291",
+    }
+
+    expect(input_only_message).to eq(expected)
   end
 
   xit "has a decrypt method that can take all three arguments" do
