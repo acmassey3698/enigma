@@ -17,10 +17,15 @@ RSpec.describe EncryptAlgorithim do
 
   it "completes a rotation" do
     algo = EncryptAlgorithim.new("Hello World", "02715", "040895")
+    algo_2 = EncryptAlgorithim.new("My Name Andrew", "05361", "080522")
 
     expect(algo.create_message).to eq("keder ohulw")
+    expect(algo_2.create_message).to eq("taqyhpvkhqublz")
   end
 
+  it "encrypts a character" do
+    algo = EncryptAlgorithim.new("Hello World", "02715", "040895")
 
-
+    expect(algo.encrypt_character("h", 0, [3, 27, 73, 20])).to eq("k")
+  end
 end
