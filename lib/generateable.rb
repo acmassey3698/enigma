@@ -5,6 +5,7 @@ module Generateable
     if key.length < 5
       key.prepend("0") until key.length == 5
     end
+    key
   end
 
   def split_keys(key)
