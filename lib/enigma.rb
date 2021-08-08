@@ -9,19 +9,20 @@ include Generateable
   end
 
   def encrypt(message, key = random_key, date = Date.today.strftime("%d%m%y"))
-    # shifts = final_shifts(key, date)
-    # split_message = message.split("")
-    # characters = characters_array
-
-    encrypted = EncryptAlgorithim.new(message, key, date)
-    require "pry"; binding.pry
+    algorithim = EncryptAlgorithim.new(message, key, date)
+    output = {
+      :encryption => algorithim.create_message,
+      :key        => key,
+      :date       => date
+    }
   end
 
   def decrypt(ciphertext, key, date = Date.today.strftime("%d%m%y"))
-    ciphertext
-    #Returns a hash with these three keys
-    ## :decryption => the decrypted String
-    ## :key => the key used for decryption as a String
-    ## :date => the date used for decryption as a String in the form DDMMYY
+    algorithim = DecryptAlgorithim.new(ciphertext, key, date)
+    output = {
+      :encryption => algorithim.create_message,
+      :key        => key,
+      :date       => date
+    }
   end
 end
