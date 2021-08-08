@@ -1,6 +1,7 @@
 require "simplecov"
 SimpleCov.start
 require './lib/enigma'
+require "date"
 
 RSpec.describe Enigma do
   it "exists" do
@@ -27,8 +28,10 @@ RSpec.describe Enigma do
   it "it has an encrypt method that can take only two arguments" do
     enigma = Enigma.new
 
+    allow(enigma).to receive(:random_key).and_return("08269")
+
     input_without_date = enigma.encrypt("Hello World", "02715")
-    input_without_key = enigma.encrypt("Hello World", "210707")
+    input_without_key = enigma.encrypt("Hello World", "080821")
 
     expected_1 = {
       :date => "080821",
@@ -36,37 +39,60 @@ RSpec.describe Enigma do
       :key => "02715"
     }
 
+    expected_2 = {
+      :date=>"080821",
+      :encryption=>"tfoa azdcmg",
+      :key=>"08269"
+    }
+
     expect(input_without_date).to eq(expected_1)
-    expect(input_without_key).to eq(expected_1)
+    expect(input_without_key).to eq(expected_2)
   end
 
   it "has an encrypt method that can take just the message" do
     enigma = Enigma.new
 
+    allow(enigma).to receive(:random_key).and_return("08269")
+    allow(enigma).to receive(:date).and_return("080821")
+
     input_only_message = enigma.encrypt("Hello World")
 
     expected = {
       :date => "080821",
-      :encryption => "rwrwyrbzacj",
-      :key => "87291",
+      :encryption => "tfoa azdcmg",
+      :key => "08269",
     }
 
     expect(input_only_message).to eq(expected)
   end
 
-  xit "has a decrypt method that can take all three arguments" do
+  it "has a decrypt method that can take all three arguments" do
     enigma = Enigma.new
 
-    input = enigma.decrypt("acdn nfaone", "23542", "120385")
+    input = enigma.decrypt("tfoa azdcmg", "08269", "080821")
 
-    expect(input).to be_a(String)
+    expected ={
+      :date => "080821",
+      :encryption => "hello world",
+      :key => "08269",
+    }
+
+    expect(input).to eq(expected)
   end
 
-  xit "has a decrypt method that allows for an omitted date" do
+  it "has a decrypt method that allows for an omitted date" do
     enigma = Enigma.new
 
-    input_without_date = enigma.decrypt("dasfn fdas", "34324")
+    allow(enigma).to receive(:date).and_return("080821")
 
-    expect(input_without_date).to be_a(String)
+    input_without_date = enigma.decrypt("tfoa azdcmg", "08269")
+
+    expected = {
+      :date => "080821",
+      :encryption => "hello world",
+      :key => "08269",
+    }
+
+    expect(input_without_date).to eq(expected)
   end
 end
