@@ -16,11 +16,13 @@ RSpec.describe Generateable do
   context "Tests for the enigma class" do
 
     it "generates a random key for the enigma class" do
+      expect(@enigma.random_key).to be_a(String)
       allow(@enigma).to receive(:random_key).and_return("08269")
       expect(@enigma.random_key).to eq("08269")
     end
 
     it "returns today's date for the enigma class" do
+      expect(@enigma.todays_date).to be_a(String)
       allow(@enigma).to receive(:todays_date).and_return("080821")
       expect(@enigma.todays_date).to eq("080821")
     end
@@ -53,11 +55,13 @@ RSpec.describe Generateable do
 
   context "tests for the encrypt algo" do
     it "recieves a random key" do
+      expect(@encrypt_algo.random_key).to be_a(String)
       allow(@encrypt_algo).to receive(:random_key).and_return("02154")
       expect(@encrypt_algo.random_key).to eq("02154")
     end
 
     it "generates todays date" do
+      expect(@encrypt_algo.todays_date).to be_a(String)
       allow(@encrypt_algo).to receive(:todays_date).and_return("080821")
       expect(@encrypt_algo.todays_date).to eq("080821")
     end
@@ -87,11 +91,13 @@ RSpec.describe Generateable do
 
   context "tests for the decrypt DecryptAlgorithim class" do
     it "recieves a random key" do
+      expect(@decrypt_algo.random_key).to be_a(String)
       allow(@decrypt_algo).to receive(:random_key).and_return("02154")
       expect(@decrypt_algo.random_key).to eq("02154")
     end
 
     it "generates todays date" do
+      expect(@decrypt_algo.todays_date).to be_a(String)
       allow(@decrypt_algo).to receive(:todays_date).and_return("080821")
       expect(@decrypt_algo.todays_date).to eq("080821")
     end
