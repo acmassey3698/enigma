@@ -3,11 +3,11 @@ require "date"
 module Generateable
 
   def random_key
-    key = rand(99999).to_s
-    if key.length < 5
-      key.prepend("0") until key.length == 5
+    key = []
+    5.times do
+      key << rand(9).to_s
     end
-    key
+    key.join
   end
 
   def todays_date
