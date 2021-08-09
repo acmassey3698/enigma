@@ -1,5 +1,4 @@
-require "simplecov"
-SimpleCov.start
+require "./spec_helper"
 require "./lib/generateable"
 require "./lib/encrypt_algorithim"
 
