@@ -1,15 +1,15 @@
 require "./spec_helper"
 require "./lib/generateable"
 require "./lib/enigma"
-require "./lib/encrypt_algorithim"
-require "./lib/decrypt_algorithim"
+require "./lib/encrypt_algorithm"
+require "./lib/decrypt_algorithm"
 
 RSpec.describe Generateable do
 
   before :each do
     @enigma = Enigma.new
-    @encrypt_algo = EncryptAlgorithim.new("Hello World", "02715", "040895")
-    @decrypt_algo = DecryptAlgorithim.new("keder ohulw", "02715", "040895")
+    @encrypt_algo = EncryptAlgorithm.new("Hello World", "02715", "040895")
+    @decrypt_algo = DecryptAlgorithm.new("keder ohulw", "02715", "040895")
   end
 
   context "Tests for the enigma class" do
@@ -101,7 +101,7 @@ RSpec.describe Generateable do
     end
   end
 
-  context "tests for the decrypt DecryptAlgorithim class" do
+  context "tests for the decrypt DecryptAlgorithm class" do
     it "recieves a random key" do
       expect(@decrypt_algo.random_key).to be_a(String)
       allow(@decrypt_algo).to receive(:random_key).and_return("02154")

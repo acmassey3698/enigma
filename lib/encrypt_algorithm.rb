@@ -1,6 +1,6 @@
 require "./lib/generateable"
 
-class EncryptAlgorithim
+class EncryptAlgorithm
 include Generateable
   attr_reader :message,
               :key,
