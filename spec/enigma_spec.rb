@@ -29,6 +29,7 @@ RSpec.describe Enigma do
     enigma = Enigma.new
 
     allow(enigma).to receive(:random_key).and_return("08269")
+    allow(enigma).to receive(:todays_date).and_return("080821")
 
     input_without_date = enigma.encrypt("Hello World", "02715")
     input_without_key = enigma.encrypt("Hello World", "080821")
@@ -53,7 +54,7 @@ RSpec.describe Enigma do
     enigma = Enigma.new
 
     allow(enigma).to receive(:random_key).and_return("08269")
-    allow(enigma).to receive(:date).and_return("080821")
+    allow(enigma).to receive(:todays_date).and_return("080821")
 
     input_only_message = enigma.encrypt("Hello World")
 
@@ -83,7 +84,7 @@ RSpec.describe Enigma do
   it "has a decrypt method that allows for an omitted date" do
     enigma = Enigma.new
 
-    allow(enigma).to receive(:date).and_return("080821")
+    allow(enigma).to receive(:todays_date).and_return("080821")
 
     input_without_date = enigma.decrypt("tfoa azdcmg", "08269")
 
