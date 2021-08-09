@@ -10,7 +10,6 @@ include Generateable
       date = key
       key = random_key
     end
-    
     algorithim = EncryptAlgorithim.new(message, key, date)
     output = {
       :encryption => algorithim.create_message,
