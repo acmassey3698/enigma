@@ -1,5 +1,4 @@
 require "./lib/generateable"
-require "date"
 require "./lib/encrypt_algorithim"
 require "./lib/decrypt_algorithim"
 
@@ -11,7 +10,7 @@ include Generateable
       date = key
       key = random_key
     end
-
+    
     algorithim = EncryptAlgorithim.new(message, key, date)
     output = {
       :encryption => algorithim.create_message,
