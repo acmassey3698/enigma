@@ -1,4 +1,5 @@
 require "./lib/generateable"
+
 class EncryptAlgorithim
 include Generateable
   attr_reader :message,
@@ -12,8 +13,6 @@ include Generateable
   end
 
   def create_message
-    # require "pry"; binding.pry
-    # require "pry"; binding.pry
     message_characters(@message).map.with_index do |character, index|
       encrypt_character(character, index, final_shifts(@key, @date))
     end.join
