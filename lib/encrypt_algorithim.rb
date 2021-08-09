@@ -23,6 +23,8 @@ include Generateable
     if characters_array.include?(character)
       rotated = characters_array.rotate(final_shifts[index % 4])
       rotated[characters_array.index(character)]
+    else
+      character
     end
   end
 end
