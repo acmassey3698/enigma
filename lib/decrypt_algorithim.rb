@@ -1,3 +1,5 @@
+require "./lib/generateable"
+
 class DecryptAlgorithim
 include Generateable
   attr_reader :ciphertext,
@@ -22,6 +24,6 @@ include Generateable
       rotated[characters_array.index(character)]
     else
       character
-    end 
+    end
   end
 end
