@@ -6,7 +6,7 @@ require "./lib/decrypt_algorithim"
 class Enigma
 include Generateable
 
-  def encrypt(message, key = random_key, date = Date.today.strftime("%d%m%y"))
+  def encrypt(message, key = random_key, date = todays_date)
     if key.length == 6
       date = key
       key = random_key
@@ -20,7 +20,7 @@ include Generateable
     }
   end
 
-  def decrypt(ciphertext, key, date = Date.today.strftime("%d%m%y"))
+  def decrypt(ciphertext, key, date = todays_date)
     algorithim = DecryptAlgorithim.new(ciphertext, key, date)
     output = {
       :encryption => algorithim.create_message,

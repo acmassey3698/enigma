@@ -1,3 +1,5 @@
+require "date"
+
 module Generateable
 
   def random_key
@@ -6,6 +8,10 @@ module Generateable
       key.prepend("0") until key.length == 5
     end
     key
+  end
+
+  def todays_date
+    Date.today.strftime("%d%m%y")
   end
 
   def split_keys(key)
@@ -19,13 +25,10 @@ module Generateable
   end
 
   def final_shifts(key, date)
-  #   final_shifts = {
-  #   a: split_keys(key)[0].to_i + offsets(date)[0].to_i,
-  #   b: split_keys(key)[1].to_i + offsets(date)[1].to_i,
-  #   c: split_keys(key)[2].to_i + offsets(date)[2].to_i,
-  #   d: split_keys(key)[3].to_i + offsets(date)[3].to_i,
-  # }
-  final_shifts = [(split_keys(key)[0].to_i + offsets(date)[0].to_i),(split_keys(key)[1].to_i + offsets(date)[1].to_i),(split_keys(key)[2].to_i + offsets(date)[2].to_i),(split_keys(key)[3].to_i + offsets(date)[3].to_i)]
+    [(split_keys(key)[0].to_i + offsets(date)[0].to_i),
+     (split_keys(key)[1].to_i + offsets(date)[1].to_i),
+     (split_keys(key)[2].to_i + offsets(date)[2].to_i),
+     (split_keys(key)[3].to_i + offsets(date)[3].to_i)]
   end
 
   def characters_array
@@ -35,5 +38,4 @@ module Generateable
   def message_characters(message)
     message.downcase.split("")
   end
-
 end

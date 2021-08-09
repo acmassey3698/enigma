@@ -30,4 +30,10 @@ RSpec.describe EncryptAlgorithim do
     expect(algo.encrypt_character("h", 0, [3, 27, 73, 20])).to eq("k")
     expect(algo_2.encrypt_character("y", 1, [7, 57, 44, 65])).to eq("a")
   end
+
+  it "recognizes punctuation marks and does not try to encrypt them" do
+    algo   = EncryptAlgorithim.new("Hello, World", "02715", "040895")
+
+    expect(algo.encrypt_character(",", 5, [3, 27, 73, 20])).to eq(",")
+  end
 end
