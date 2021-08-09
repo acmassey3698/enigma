@@ -26,13 +26,13 @@ RSpec.describe DecryptAlgorithim do
     algo = DecryptAlgorithim.new("keder ohulw", "02715", "040895")
     algo_2 = DecryptAlgorithim.new("taqyhpvkhqublz", "05361", "080522")
 
-    expect(algo.decrypt_character("k", 0, [3, 27, 73, 20])).to eq("h")
-    expect(algo_2.decrypt_character("a", 1, [7, 57, 44, 65])).to eq("y")
+    expect(algo.decrypt_character("k", 0, {a: 3, b: 27, c: 73, d: 20})).to eq("h")
+    expect(algo_2.decrypt_character("a", 1, {a: 7, b: 57, c: 44, d: 65})).to eq("y")
   end
 
   it "recognizes punctuation marks and does not try to decrypt them" do
     algo = DecryptAlgorithim.new("keder, ohulw", "02715", "040895")
 
-    expect(algo.decrypt_character(",", 5, [3, 27, 73, 20])).to eq(",")
+    expect(algo.decrypt_character(",", 5, {a: 3, b: 27, c: 73, d: 20})).to eq(",")
   end
 end

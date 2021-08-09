@@ -26,13 +26,13 @@ RSpec.describe EncryptAlgorithim do
     algo   = EncryptAlgorithim.new("Hello World", "02715", "040895")
     algo_2 = EncryptAlgorithim.new("My Name Andrew", "05361", "080522")
 
-    expect(algo.encrypt_character("h", 0, [3, 27, 73, 20])).to eq("k")
-    expect(algo_2.encrypt_character("y", 1, [7, 57, 44, 65])).to eq("a")
+    expect(algo.encrypt_character("h", 0, {a: 3, b: 27, c: 73, d: 20})).to eq("k")
+    expect(algo_2.encrypt_character("y", 1, {a: 7, b: 57, c: 44, d: 65})).to eq("a")
   end
 
   it "recognizes punctuation marks and does not try to encrypt them" do
     algo   = EncryptAlgorithim.new("Hello, World", "02715", "040895")
 
-    expect(algo.encrypt_character(",", 5, [3, 27, 73, 20])).to eq(",")
+    expect(algo.encrypt_character(",", 5, {a: 3, b: 27, c: 73, d: 20})).to eq(",")
   end
 end
