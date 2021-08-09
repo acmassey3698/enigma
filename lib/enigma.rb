@@ -1,7 +1,7 @@
-require "./generateable"
+require "./lib/generateable"
 require "date"
-require "./encrypt_algorithim"
-require "./decrypt_algorithim"
+require "./lib/encrypt_algorithim"
+require "./lib/decrypt_algorithim"
 
 class Enigma
 include Generateable
