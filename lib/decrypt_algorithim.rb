@@ -17,7 +17,11 @@ include Generateable
   end
 
   def decrypt_character(character, index, final_shifts)
-    rotated = characters_array.rotate((final_shifts[index % 4]) * -1)
-    rotated[characters_array.index(character)]
+    if characters_array.include?(character)
+      rotated = characters_array.rotate((final_shifts[index % 4]) * -1)
+      rotated[characters_array.index(character)]
+    else
+      character
+    end 
   end
-end 
+end
