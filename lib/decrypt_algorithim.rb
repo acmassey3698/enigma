@@ -1,6 +1,6 @@
 require "./lib/generateable"
 
-class DecryptAlgorithim
+class DecryptAlgorithm
 include Generateable
   attr_reader :ciphertext,
               :key,

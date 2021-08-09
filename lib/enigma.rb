@@ -1,6 +1,6 @@
 require "./lib/generateable"
-require "./lib/encrypt_algorithim"
-require "./lib/decrypt_algorithim"
+require "./lib/encrypt_algorithm"
+require "./lib/decrypt_algorithm"
 
 class Enigma
 include Generateable
@@ -10,18 +10,18 @@ include Generateable
       date = key
       key = random_key
     end
-    algorithim = EncryptAlgorithim.new(message, key, date)
+    algorithm = EncryptAlgorithm.new(message, key, date)
     output = {
-      :encryption => algorithim.create_message,
+      :encryption => algorithm.create_message,
       :key        => key,
       :date       => date
     }
   end
 
   def decrypt(ciphertext, key, date = todays_date)
-    algorithim = DecryptAlgorithim.new(ciphertext, key, date)
+    algorithm = DecryptAlgorithm.new(ciphertext, key, date)
     output = {
-      :encryption => algorithim.create_message,
+      :encryption => algorithm.create_message,
       :key        => key,
       :date       => date
     }
