@@ -20,7 +20,7 @@ include Generateable
 
   def encrypt_character(character, index, final_shifts)
     if characters_array.include?(character)
-      rotated = characters_array.rotate(final_shifts[index % 4])
+      rotated = characters_array.rotate(final_shifts.values[index % 4])
       rotated[characters_array.index(character)]
     else
       character
