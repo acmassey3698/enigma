@@ -1,7 +1,6 @@
 require "simplecov"
 SimpleCov.start
 require "./lib/generateable"
-require "./lib/enigma"
 require "./lib/encrypt_algorithim"
 
 RSpec.describe EncryptAlgorithim do
