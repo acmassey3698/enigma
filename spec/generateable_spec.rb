@@ -38,7 +38,13 @@ RSpec.describe Generateable do
     end
 
     it "calculates the final shifts" do
-      expected = [7, 57, 44, 65]
+      expected =
+       {
+      :a => 7,
+      :b => 57,
+      :c => 44,
+      :d => 65
+      }
       expect(@enigma.final_shifts("05361", "080522")).to eq(expected)
     end
 
@@ -75,7 +81,14 @@ RSpec.describe Generateable do
     end
 
     it "creates the final shifts" do
-      expect(@encrypt_algo.final_shifts(@encrypt_algo.key, @encrypt_algo.date)).to eq([3, 27, 73, 20])
+      expected =
+      {
+     :a => 3,
+     :b => 27,
+     :c => 73,
+     :d => 20
+     }
+      expect(@encrypt_algo.final_shifts(@encrypt_algo.key, @encrypt_algo.date)).to eq(expected)
     end
 
     it "creates an array of characters" do
@@ -111,7 +124,14 @@ RSpec.describe Generateable do
     end
 
     it "creates the final shifts" do
-      expect(@decrypt_algo.final_shifts(@decrypt_algo.key, @decrypt_algo.date)).to eq([3, 27, 73, 20])
+      expected =
+      {
+     :a => 3,
+     :b => 27,
+     :c => 73,
+     :d => 20
+     }
+      expect(@decrypt_algo.final_shifts(@decrypt_algo.key, @decrypt_algo.date)).to eq(expected)
     end
 
     it "creates an array of characters" do
